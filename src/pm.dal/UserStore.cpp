@@ -7,6 +7,9 @@ static std::vector<pm::types::User> users;
 
 void pm::dal::UserStore::create(pm::types::User user)
 {
+	// If the user exists (check email) - throw exception (find_if)
+	// Generate new id
+	users.push_back(user);
 }
 
 std::vector<pm::types::User> pm::dal::UserStore::getAll()
@@ -20,6 +23,8 @@ void pm::dal::UserStore::remove(size_t id)
 
 void pm::dal::UserStore::update(pm::types::User user)
 {
+	// find the user by id
+	// If it does not exist - throw exception
 }
 
 pm::types::User pm::dal::UserStore::getById(size_t id)
