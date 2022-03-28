@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "20220328-DynamicMenu", "20220328-DynamicMenu\20220328-DynamicMenu.vcxproj", "{0736C241-9B9D-4E6F-BFAD-A7BB703F9C58}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0736C241-9B9D-4E6F-BFAD-A7BB703F9C58}.Debug|x64.ActiveCfg = Debug|x64
+		{0736C241-9B9D-4E6F-BFAD-A7BB703F9C58}.Debug|x64.Build.0 = Debug|x64
+		{0736C241-9B9D-4E6F-BFAD-A7BB703F9C58}.Debug|x86.ActiveCfg = Debug|Win32
+		{0736C241-9B9D-4E6F-BFAD-A7BB703F9C58}.Debug|x86.Build.0 = Debug|Win32
+		{0736C241-9B9D-4E6F-BFAD-A7BB703F9C58}.Release|x64.ActiveCfg = Release|x64
+		{0736C241-9B9D-4E6F-BFAD-A7BB703F9C58}.Release|x64.Build.0 = Release|x64
+		{0736C241-9B9D-4E6F-BFAD-A7BB703F9C58}.Release|x86.ActiveCfg = Release|Win32
+		{0736C241-9B9D-4E6F-BFAD-A7BB703F9C58}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DD9FE89B-2252-4BD0-AD0D-F6866B2FC355}
+	EndGlobalSection
+EndGlobal
