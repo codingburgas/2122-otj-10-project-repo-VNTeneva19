@@ -12,5 +12,7 @@
 #include <vector>
 #include <algorithm>
 #include <stdexcept>
+#include <iostream>
+#include <fstream>
 
 #endif //PCH_H_DAL
