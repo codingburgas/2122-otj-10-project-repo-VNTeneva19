@@ -11,6 +11,7 @@ namespace pmbll
 	public:
 		std::string hashString(std::string str);
 		std::string createdOn();
+		bool checkPassword(std::string password);
 		void registerNewUser(std::string firstName, std::string lastName, std::string email, unsigned short age, std::string password);
 	private:
 		std::string username;
