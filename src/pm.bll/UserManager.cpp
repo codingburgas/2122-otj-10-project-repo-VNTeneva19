@@ -1,10 +1,12 @@
 #include "UserManager.h"
-#include "../pm.tools/md5.h"
+#include "../pm.dal/UserStore.cpp"
+#include "../pm.tools/md5.cpp"
 #include "../pm.types/User.h"
 #include "pch.h"
+#pragma warning(disable : 4996)
 
 //Hashing via md5
-std::string pmbll::UserManager::hashString(std::string str)
+std::string UserManager::hashString(std::string str)
 {
 	return md5(str);
 
@@ -18,20 +20,20 @@ std::string pmbll::UserManager::hashString(std::string str)
 	//return newStr;
 }
 
-std::string pmbll::UserManager::createdOn()
+std::string UserManager::createdOn()
 {
 
 	// Current date and time based on current system
 	time_t now = time(0);
 
 	// Convert 'now' to string form
-	char* dt = ctime(&now);
+	char* dt = ctime(&now); 
 
 	return dt;
-	
+
 }
 
-bool pmbll::UserManager::checkPassword(std::string password)
+bool UserManager::checkPassword(std::string password)
 {
 	// Password requirements
 
@@ -40,18 +42,16 @@ bool pmbll::UserManager::checkPassword(std::string password)
 	// Check if first letter is in uppercase
 	if (password[0] < 65 || password[0] > 90)
 	{
-		throw "First letter must be in uppercase!";
 		flag++;
 	}
 
 	// Check if password lenghts is more than 8 characters
 	if (password.length() <= 8)
 	{
-		throw "Password must be more than 8 characters!";
 		flag++;
 	}
 
-	if (flag < 2)
+	if (flag == 2)
 	{
 		return false;
 	}
@@ -59,11 +59,13 @@ bool pmbll::UserManager::checkPassword(std::string password)
 	return true;
 }
 
-bool pmbll::UserManager::checkEmail(std::string email)
+// Email requirements
+bool UserManager::checkEmail(std::string email)
 {
 	int flag = 0;
 	for (size_t i = 0; i < email.size(); i++)
 	{
+		// Check if email has '@'
 		if (email[i] == '@')
 		{
 			flag++;
@@ -72,6 +74,7 @@ bool pmbll::UserManager::checkEmail(std::string email)
 	}
 	for (size_t i = 0; i < email.size(); i++)
 	{
+		// Check if email has a link in it
 		if (email[i] == '.')
 		{
 			flag++;
@@ -79,19 +82,22 @@ bool pmbll::UserManager::checkEmail(std::string email)
 		}
 	}
 	if (flag < 2) {
-		throw "Invalid email!";
+		std::cout << "Invalid email!";
 		return false;
 	}
 
 	return true;
 }
 
-void pmbll::UserManager::registerNewUser(std::string firstName, std::string lastName, std::string email, unsigned short age, std::string password)
+// Assigns user's information values into pmtypes variables
+void UserManager::registerNewUser(std::string firstName, std::string lastName, std::string email, unsigned short age, std::string password)
 {
 	pmtypes::User user;
+	pmdal::UserStore UserStore;
 
-	pmbll::UserManager::checkPassword(password);
-	pmbll::UserManager::checkEmail(email);
+	//bool passChecker = UserManager::checkPassword(password);
+	//bool emailChecker = UserManager::checkEmail(email);
+
 
 	user.firstName = firstName;
 	user.lastName = lastName;
@@ -100,7 +106,7 @@ void pmbll::UserManager::registerNewUser(std::string firstName, std::string last
 	user.password = hashString(password);
 	user.createdOn = createdOn();
 
+
+	UserStore.registerNewUserInTxt(user);
 }
-
-
 

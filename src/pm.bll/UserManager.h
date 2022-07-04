@@ -1,28 +1,15 @@
 #pragma once
 #include "../pm.dal/UserStore.h"
-#include "UserManager.cpp"
 #include "pch.h"
 
 
-namespace pmbll
+struct UserManager
 {
-	class UserManager
-	{
-	public:
-		std::string hashString(std::string str);
-		std::string createdOn();
-		bool checkPassword(std::string password);
-		bool checkEmail(std::string email);
-		void registerNewUser(std::string firstName, std::string lastName, std::string email, unsigned short age, std::string password);
-	private:
-		std::string username;
-		std::string password;
-	};
-
-}
-
-
-
-
+	std::string hashString(std::string str);
+	std::string createdOn();
+	bool checkPassword(std::string password);
+	bool checkEmail(std::string email);
+	void registerNewUser(std::string firstName, std::string lastName, std::string email, unsigned short age, std::string password);
+};
 
 

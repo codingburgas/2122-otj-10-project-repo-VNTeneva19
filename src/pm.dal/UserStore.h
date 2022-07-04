@@ -7,7 +7,7 @@ namespace pmdal
 {
 	struct UserStore
 	{
-		void registerNewUserInTxt(std::string username, std::string password);
+		void registerNewUserInTxt(pmtypes::User& user);
 	};
 
 }
