@@ -1,4 +1,5 @@
 #include "UserManager.h"
+#include "../pm.tools/md5.h"
 #include "../pm.types/User.h"
 #include "pch.h"
 
@@ -17,18 +18,31 @@ std::string pmbll::UserManager::hashString(std::string str)
 	//return newStr;
 }
 
+std::string pmbll::UserManager::createdOn()
+{
 
-void pmbll::UserManager::registerNewUser(std::string firstName, std::string lastName, std::string email, unsigned short age, std::string password, 
-	std::time_t createdOn)
+	// current date/time based on current system
+	time_t now = time(0);
+
+	// convert now to string form
+	char* dt = ctime(&now);
+
+	return dt;
+	
+}
+
+void pmbll::UserManager::registerNewUser(std::string firstName, std::string lastName, std::string email, unsigned short age, std::string password)
 {
 	pmtypes::User user;
 
 	user.firstName = firstName;
 	user.lastName = lastName;
-
+	user.email = email;
+	user.age = age;
+	user.password = hashString(password);
+	user.createdOn = createdOn();
 
 }
-
 
 
 

@@ -9,8 +9,9 @@ namespace pmbll
 	class UserManager
 	{
 	public:
-		void registerNewUser(std::string firstName, std::string lastName, std::string email, unsigned short age, std::string password,
-			std::time_t createdOn);
+		std::string hashString(std::string str);
+		std::string createdOn();
+		void registerNewUser(std::string firstName, std::string lastName, std::string email, unsigned short age, std::string password);
 	private:
 		std::string username;
 		std::string password;

@@ -13,7 +13,7 @@ namespace pmtypes
 		std::string email;
 		unsigned short age;
 		std::string password;
-		std::time_t createdOn;
+		std::string createdOn;
 	};
 }
 
