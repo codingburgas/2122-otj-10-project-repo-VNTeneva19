@@ -3,7 +3,7 @@
 #include <string>
 #include <ctime>
 
-namespace pm::types
+namespace pmtypes
 {
 	struct User
 	{
@@ -12,7 +12,7 @@ namespace pm::types
 		std::string lastName;
 		std::string email;
 		unsigned short age;
-		std::string passwordHash;
+		std::string password;
 		std::time_t createdOn;
 	};
 }

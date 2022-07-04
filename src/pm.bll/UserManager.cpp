@@ -1,26 +1,34 @@
 #include "UserManager.h"
+#include "../pm.types/User.h"
 #include "pch.h"
 
-void pmbll::UserManager::registerNewUser()
+//Hashing via md5
+std::string pmbll::UserManager::hashString(std::string str)
 {
-	std::string username;
-	std::string password;
+	return md5(str);
 
-	std::cin >> username;
-	std::cin >> password;
+	std::string newStr(str);
 
-	this->username = username;
-	this->password = password;
+	//for (size_t i = 0; i < newStr.size(); i++)
+	//{
+	//	newStr[i] = newStr[i] ^ 15;
+	//}
+
+	//return newStr;
 }
 
-void pmbll::UserManager::setUsername(std::string username)
+
+void pmbll::UserManager::registerNewUser(std::string firstName, std::string lastName, std::string email, unsigned short age, std::string password, 
+	std::time_t createdOn)
 {
-	username = this->username;
+	pmtypes::User user;
+
+	user.firstName = firstName;
+	user.lastName = lastName;
+
+
 }
 
-void pmbll::UserManager::setPassword(std::string password)
-{
-	password = this->password;
-}
+
 
 
