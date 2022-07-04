@@ -59,11 +59,39 @@ bool pmbll::UserManager::checkPassword(std::string password)
 	return true;
 }
 
+bool pmbll::UserManager::checkEmail(std::string email)
+{
+	int flag = 0;
+	for (size_t i = 0; i < email.size(); i++)
+	{
+		if (email[i] == '@')
+		{
+			flag++;
+			break;
+		}
+	}
+	for (size_t i = 0; i < email.size(); i++)
+	{
+		if (email[i] == '.')
+		{
+			flag++;
+			break;
+		}
+	}
+	if (flag < 2) {
+		throw "Invalid email!";
+		return false;
+	}
+
+	return true;
+}
+
 void pmbll::UserManager::registerNewUser(std::string firstName, std::string lastName, std::string email, unsigned short age, std::string password)
 {
 	pmtypes::User user;
 
 	pmbll::UserManager::checkPassword(password);
+	pmbll::UserManager::checkEmail(email);
 
 	user.firstName = firstName;
 	user.lastName = lastName;
