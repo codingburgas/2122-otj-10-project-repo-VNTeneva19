@@ -27,7 +27,7 @@ std::string UserManager::createdOn()
 	time_t now = time(0);
 
 	// Convert 'now' to string form
-	char* dt = ctime(&now); 
+	char* dt = ctime(&now);
 
 	return dt;
 
@@ -59,10 +59,11 @@ bool UserManager::checkPassword(std::string password)
 	return true;
 }
 
-// Email requirements
+
 bool UserManager::checkEmail(std::string email)
 {
 	int flag = 0;
+	// Email requirements
 	for (size_t i = 0; i < email.size(); i++)
 	{
 		// Check if email has '@'
@@ -89,6 +90,26 @@ bool UserManager::checkEmail(std::string email)
 	return true;
 }
 
+std::string UserManager::constructAccount(pmtypes::User user)
+{
+	std::string account = std::to_string(user.id);
+	account += "|";
+	account = user.firstName;
+	account += "|";
+	account += user.lastName;
+	account += "|";
+	account += user.email;
+	account += "|";
+	account += user.age;
+	account += "|";
+	account += hashString(user.password);
+	account += "|";
+	account += createdOn();
+
+	return account;
+}
+
+
 // Assigns user's information values into pmtypes variables
 void UserManager::registerNewUser(std::string firstName, std::string lastName, std::string email, unsigned short age, std::string password)
 {
@@ -98,7 +119,7 @@ void UserManager::registerNewUser(std::string firstName, std::string lastName, s
 	//bool passChecker = UserManager::checkPassword(password);
 	//bool emailChecker = UserManager::checkEmail(email);
 
-
+	user.id = generateNewId();
 	user.firstName = firstName;
 	user.lastName = lastName;
 	user.email = email;
@@ -106,7 +127,17 @@ void UserManager::registerNewUser(std::string firstName, std::string lastName, s
 	user.password = hashString(password);
 	user.createdOn = createdOn();
 
+	std::string account = constructAccount(user);
 
-	UserStore.registerNewUserInTxt(user);
+	UserStore.registerNewUserInTxt(account);
 }
+
+bool UserManager::loginUser(std::string email, std::string password)
+{
+	std::string passHash = 
+
+	return false;
+}
+
+
 

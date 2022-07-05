@@ -1,16 +1,14 @@
 #include "UserStore.h"
 #include "../pm.types/User.h"
 #include "../pm.bll/UserManager.h"
-#include "pch.h"
 
-std::string account;
+std::vector<pmtypes::User> users;
 
 size_t generateNewId()
 {
 	size_t maxId = 0;
-	pmtypes::User user;
 
-	for (int i = 0; i < maxId; i++)
+	for (auto user : users)
 	{
 		if (user.id > maxId)
 		{
@@ -21,27 +19,25 @@ size_t generateNewId()
 	return maxId + 1;
 }
 
-void pmdal::UserStore::registerNewUserInTxt(pmtypes::User& user)
+void pmdal::UserStore::registerNewUserInTxt(std::string user)
 {
 	std::ofstream myFile;
 
 	// Creates a file for the new user
-	myFile.open("users.txt");
-	
-	account = user.firstName;
-	account += "|";
-	account = user.lastName;
-	account += "|";
-	account = user.email;
-	account += "|";
-	account = user.age;
-	account += "|";
-	account = user.password;
-	account += "|";
-	account = user.createdOn;
+	myFile.open("../pm.dal/users.txt", std::ios::out | std::ios::app);
 
 	// Adds the user's information into the file
-	myFile << account << std::endl;
+	//myFile << user.id << "|";
+	//myFile << user.firstName << "|";
+	//myFile << user.lastName << "|";
+	//myFile << user.email << "|";
+	//myFile << user.age << "|";
+	//myFile << user.password << "|";
+	//myFile << user.createdOn;
+
+	myFile << user;
+
+
 
 	// Closes the file
 	myFile.close();

@@ -15,8 +15,6 @@ int main()
 
 	std::cin >> firstName >> lastName >> email >> age >> password;
 
-	std::cout << users.firstName;
-
 	user.registerNewUser(firstName, lastName, email, age, password);
 
 }

@@ -14,6 +14,7 @@ namespace pmtypes
 		unsigned short age;
 		std::string password;
 		std::string createdOn;
+		std::string privilege;
 	};
 }
 
