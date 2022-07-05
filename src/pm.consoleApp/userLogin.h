@@ -7,5 +7,6 @@ struct UserLogin
 	int choiceMenu();
 	void registerMenu();
 	void loginMenu();
+	void userManagementView();
 };
 

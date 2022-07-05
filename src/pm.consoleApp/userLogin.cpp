@@ -47,9 +47,14 @@ int UserLogin::choiceMenu()
 	case 1:
 		registerMenu();
 		break;
+	case 2:
+		loginMenu();
+		break;
 	default:
 		std::cout << "Wrong choice! Choose again." << std::endl;
-		break;
+		Sleep(1000);
+		system("CLS");
+		choiceMenu();
 	}
 }
 
@@ -107,14 +112,12 @@ void UserLogin::loginMenu()
 	std::string email, password;
 
 	UserManager check;
-	
-	pmdal::UserStore login;
 
 	bool checker = true;
 
 	while (checker)
 	{
-		gotoXY(55, 7); std::cout << "        -- SIGN IN --         " << std::endl;
+		gotoXY(55, 7); std::cout << "          -- LOG IN --          " << std::endl;
 		gotoXY(55, 8); std::cout << " ------------------------------ " << std::endl;
 		gotoXY(55, 9); std::cout << "|            Email             |" << std::endl;
 		gotoXY(55, 10); std::cout << "|         -> "; std::cin >> email;  std::cout << "\033[F";
@@ -129,8 +132,54 @@ void UserLogin::loginMenu()
 		gotoXY(55, 12); std::cout << "|         -> "; std::cin >> password;  std::cout << "\033[F";
 		gotoXY(55, 13); std::cout << " ------------------------------ " << std::endl;
 
-		checker = false;
+		if (check.loginUser(email, password) == true)
+		{
+			gotoXY(55, 14); std::cout << "Wrong email or password";
+			Sleep(1000);
+			system("CLS");
+			choiceMenu();
+		}
+		else if (check.loginUser(email, password) == false)
+		{
+			system("CLS");
+			userManagementView();
+		}
 	}
 
+	
+
 }
+
+void UserLogin::userManagementView()
+{
+	system("cls");
+
+	displayMainMenu();
+
+	pmdal::UserStore user;
+
+	gotoXY(75, 7); std::cout << "1. Display all users";
+	gotoXY(75, 8); std::cout << "0. Back" << std::endl;
+
+	int choice;
+
+	gotoXY(75, 10); std::cin >> choice;
+
+	switch (choice)
+	{
+	case 0:
+		system("CLS");
+		choiceMenu();
+	case 1:
+		system("CLS");
+		user.displayAllUsers();
+		break;
+	default:
+		std::cout << "Wrong choice! Choose again." << std::endl;
+		Sleep(1000);
+		system("CLS");
+		choiceMenu();
+	}
+}
+
 

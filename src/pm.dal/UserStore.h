@@ -8,6 +8,7 @@ namespace pmdal
 	struct UserStore
 	{
 		void registerNewUserInTxt(pmtypes::User& user);
+		void displayAllUsers();
 	};
 
 }

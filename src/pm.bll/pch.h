@@ -14,5 +14,6 @@
 #include <stdexcept>
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
 #endif //PCH_H_BLL

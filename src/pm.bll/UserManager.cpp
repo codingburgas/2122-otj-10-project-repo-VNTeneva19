@@ -140,16 +140,31 @@ void UserManager::registerNewUser(std::string firstName, std::string lastName, s
 
 bool UserManager::loginUser(std::string email, std::string password)
 {
-	std::string passHash = hashString(password);
+	std::ifstream myFile;
 
-	pmtypes::User user;
+	std::string fileEmail;
+	std::string filePass;
+	
+	std::string line;
 
-	if (user.password != passHash)
+	myFile.open("../pm.dal/users.txt", std::ios::in);
+
+
+	while (std::getline(myFile, line))
 	{
-		return false;
-	}
+		std::stringstream convertor(line);
 
-	return true;
+		std::string passHash = hashString(password);
+
+		convertor >> fileEmail >> filePass;
+
+		if (fileEmail == email && filePass == passHash)
+		{
+			return true;
+		}
+
+	}
+	return false;
 }
 
 
