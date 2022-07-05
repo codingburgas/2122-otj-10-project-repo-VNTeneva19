@@ -2,19 +2,19 @@
 #include "../pm.bll/UserManager.cpp"
 #include "../pm.dal/UserStore.h"
 #include "../pm.types/User.h"
+#include "userLogin.h"
+//#include"BackEnd.h"
+//#include"FrontEnd.h"
+//using namespace std;
 
 int main()
 {
-	std::string firstName, lastName, email, password, createdOn;
+//	Menu menu;
+//	menu.displaySigninOptions();
 
-	unsigned short age;
+	UserLogin a;
 
-	UserManager user;
-
-	pmtypes::User users;
-
-	std::cin >> firstName >> lastName >> email >> age >> password;
-
-	user.registerNewUser(firstName, lastName, email, age, password);
-
+	a.choiceMenu();
 }
+
+

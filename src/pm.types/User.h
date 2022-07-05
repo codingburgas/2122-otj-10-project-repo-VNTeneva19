@@ -7,14 +7,12 @@ namespace pmtypes
 {
 	struct User
 	{
-		size_t id;
 		std::string firstName;
 		std::string lastName;
 		std::string email;
 		unsigned short age;
 		std::string password;
 		std::string createdOn;
-		std::string privilege;
 	};
 }
 

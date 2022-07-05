@@ -90,17 +90,26 @@ bool UserManager::checkEmail(std::string email)
 	return true;
 }
 
+bool UserManager::checkAge(unsigned short age)
+{
+	if (!isdigit(age))
+	{
+		std::cout << "Invalid input!";
+		return false;
+	}
+
+	return true;
+}
+
 std::string UserManager::constructAccount(pmtypes::User user)
 {
-	std::string account = std::to_string(user.id);
-	account += "|";
-	account = user.firstName;
+	std::string account = user.firstName;
 	account += "|";
 	account += user.lastName;
 	account += "|";
 	account += user.email;
 	account += "|";
-	account += user.age;
+	account += std::to_string(user.age);
 	account += "|";
 	account += hashString(user.password);
 	account += "|";
@@ -119,7 +128,6 @@ void UserManager::registerNewUser(std::string firstName, std::string lastName, s
 	//bool passChecker = UserManager::checkPassword(password);
 	//bool emailChecker = UserManager::checkEmail(email);
 
-	user.id = generateNewId();
 	user.firstName = firstName;
 	user.lastName = lastName;
 	user.email = email;
@@ -127,16 +135,21 @@ void UserManager::registerNewUser(std::string firstName, std::string lastName, s
 	user.password = hashString(password);
 	user.createdOn = createdOn();
 
-	std::string account = constructAccount(user);
-
-	UserStore.registerNewUserInTxt(account);
+	UserStore.registerNewUserInTxt(user);
 }
 
 bool UserManager::loginUser(std::string email, std::string password)
 {
-	std::string passHash = 
+	std::string passHash = hashString(password);
 
-	return false;
+	pmtypes::User user;
+
+	if (user.password != passHash)
+	{
+		return false;
+	}
+
+	return true;
 }
 
 

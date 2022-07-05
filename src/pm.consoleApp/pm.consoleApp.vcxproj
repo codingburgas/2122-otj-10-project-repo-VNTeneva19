@@ -139,7 +139,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BackEnd.cpp" />
+    <ClCompile Include="FrontEnd.cpp" />
     <ClCompile Include="pm.consoleApp.cpp" />
+    <ClCompile Include="userLogin.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BackEnd.h" />
+    <ClInclude Include="FrontEnd.h" />
+    <ClInclude Include="userLogin.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

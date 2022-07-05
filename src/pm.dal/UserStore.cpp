@@ -4,39 +4,19 @@
 
 std::vector<pmtypes::User> users;
 
-size_t generateNewId()
-{
-	size_t maxId = 0;
-
-	for (auto user : users)
-	{
-		if (user.id > maxId)
-		{
-			maxId = user.id;
-		}
-	}
-
-	return maxId + 1;
-}
-
-void pmdal::UserStore::registerNewUserInTxt(std::string user)
+void pmdal::UserStore::registerNewUserInTxt(pmtypes::User& user)
 {
 	std::ofstream myFile;
+
+	UserManager construct;
 
 	// Creates a file for the new user
 	myFile.open("../pm.dal/users.txt", std::ios::out | std::ios::app);
 
 	// Adds the user's information into the file
-	//myFile << user.id << "|";
-	//myFile << user.firstName << "|";
-	//myFile << user.lastName << "|";
-	//myFile << user.email << "|";
-	//myFile << user.age << "|";
-	//myFile << user.password << "|";
-	//myFile << user.createdOn;
-
-	myFile << user;
-
+	
+	std::string account = construct.constructAccount(user);
+	myFile << account;
 
 
 	// Closes the file
